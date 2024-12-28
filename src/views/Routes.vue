@@ -490,9 +490,9 @@ const viewRouteDetail = (route) => {
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-  margin: 24px auto;
+  margin: 0 auto 24px auto;
   max-width: 1200px;
-  padding: 24px;
+  padding: 20px 24px 24px 24px;
 }
 
 .search-bar {

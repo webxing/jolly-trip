@@ -32,9 +32,7 @@
       <!-- 主要内容区域 -->
       <el-main>
         <router-view v-slot="{ Component }">
-          <transition name="fade" mode="out-in">
-            <component :is="Component" />
-          </transition>
+          <component :is="Component" v-show="isPageVisible" />
         </router-view>
       </el-main>
     </el-container>
@@ -43,6 +41,30 @@
 
 <script setup>
 import { HomeFilled, Compass, Guide, UserFilled } from '@element-plus/icons-vue'
+import { watch, nextTick, ref } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+const isPageVisible = ref(true)
+
+// 监听路由变化
+watch(
+  () => route.path,
+  () => {
+    // 立即隐藏当前页面
+    isPageVisible.value = false
+    
+    nextTick(() => {
+      // 找到主内容区域的元素
+      const mainContent = document.querySelector('.el-main')
+      if (mainContent) {
+        mainContent.scrollTop = 0
+      }
+      // 显示新页面
+      isPageVisible.value = true
+    })
+  }
+)
 </script>
 
 <style>
@@ -54,10 +76,12 @@ import { HomeFilled, Compass, Guide, UserFilled } from '@element-plus/icons-vue'
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .el-container {
   height: 100%;
+  overflow: hidden;
 }
 
 .el-header {
@@ -65,7 +89,7 @@ import { HomeFilled, Compass, Guide, UserFilled } from '@element-plus/icons-vue'
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
-  width: calc(100vw - 16px);
+  width: 100%;
   z-index: 100;
   padding: 0;
 }
@@ -118,20 +142,11 @@ import { HomeFilled, Compass, Guide, UserFilled } from '@element-plus/icons-vue'
 }
 
 .el-main {
-  padding: 0;
+  margin-top: 60px; /* 为固定的header留出空间 */
   height: calc(100vh - 60px);
-  overflow-x: hidden;
-}
-
-/* 路由过渡动画 */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* 响应式设计 */
@@ -151,5 +166,10 @@ import { HomeFilled, Compass, Guide, UserFilled } from '@element-plus/icons-vue'
   .nav-link {
     font-size: 1em;
   }
+}
+
+/* 添加平滑滚动效果 */
+html {
+  scroll-behavior: smooth;
 }
 </style>

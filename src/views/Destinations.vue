@@ -145,7 +145,6 @@ const getImageUrl = (imagePath) => {
 .destinations-page {
   padding: 20px;
   max-width: 1200px;
-  margin: 30px auto;
 }
 
 .search-section {

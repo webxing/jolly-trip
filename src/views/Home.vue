@@ -114,11 +114,9 @@
         <div class="section-header">
           <h2>热门目的地</h2>
           <div class="header-actions">
-            <el-button type="primary" class="header-button" @click="refreshDestinations" :loading="loading.destinations">
+            <el-button type="primary" plain @click="goToDestinations">查看全部</el-button>
+            <el-button type="primary" @click="refreshDestinations" :loading="loading.destinations">
               <el-icon><Refresh /></el-icon>换一批
-            </el-button>
-            <el-button type="primary" class="header-button" plain @click="goToDestinations">
-              <el-icon><ArrowRight /></el-icon>查看更多
             </el-button>
           </div>
         </div>

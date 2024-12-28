@@ -498,7 +498,15 @@ const focusRoute = (selectedRoute) => {
   })
 }
 
+// 判断是否在中国境内
+const isInChina = (lat, lng) => {
+  // 简单的经纬度范围判断
+  return lat >= 18 && lat <= 53 && lng >= 73 && lng <= 135
+}
+
 // 初始化地图
+const gaodeLayer = ref(null)
+const osmLayer = ref(null)
 const initMap = () => {
   if (!mapContainer.value) return
 
@@ -514,11 +522,49 @@ const initMap = () => {
     position: 'topleft'
   }).addTo(map.value)
 
-  // 添加底图
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  // 创建高德地图图层
+  gaodeLayer.value = L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+    subdomains: ['1', '2', '3', '4'],
     maxZoom: 19,
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(map.value)
+    minZoom: 4,
+    attribution: '高德地图',
+    opacity: 0.5
+  })
+
+  // 创建OpenStreetMap图层
+  osmLayer.value = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+    subdomains: ['a', 'b', 'c', 'd'],
+    maxZoom: 19,
+    minZoom: 4,
+    attribution: ' OpenStreetMap contributors, CartoDB',
+    opacity: 0.5
+  })
+
+  // 默认使用高德地图图层
+  gaodeLayer.value.addTo(map.value)
+
+  // 监听地图移动事件，动态切换底图
+  map.value.on('moveend', async () => {
+    await nextTick()
+    if (!map.value) return
+    
+    const center = map.value.getCenter()
+    if (!center) return
+    
+    const isInChinaArea = isInChina(center.lat, center.lng)
+    
+    if (isInChinaArea && !map.value.hasLayer(gaodeLayer.value)) {
+      if (map.value.hasLayer(osmLayer.value)) {
+        map.value.removeLayer(osmLayer.value)
+      }
+      gaodeLayer.value.addTo(map.value)
+    } else if (!isInChinaArea && !map.value.hasLayer(osmLayer.value)) {
+      if (map.value.hasLayer(gaodeLayer.value)) {
+        map.value.removeLayer(gaodeLayer.value)
+      }
+      osmLayer.value.addTo(map.value)
+    }
+  })
 
   // 加载路线数据
   nextTick(() => {
@@ -541,10 +587,16 @@ watch(
 )
 
 // 组件挂载时初始化
-onMounted(() => {
-  initMap()
+onMounted(async () => {
+  // 等待下一个渲染周期，确保 DOM 已更新
+  await nextTick()
+  // 给容器一点时间完全渲染
+  setTimeout(() => {
+    initMap()
+  }, 100)
 })
 
+// 组件卸载时清理
 onUnmounted(() => {
   if (map.value) {
     map.value.remove()
@@ -571,7 +623,7 @@ onUnmounted(() => {
     top: 20px;
     right: 20px;
     width: 380px;
-    max-height: calc(100vh - 40px);
+    max-height: calc(100vh - 80px);
     background: white;
     border-radius: 12px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);

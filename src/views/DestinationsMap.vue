@@ -112,7 +112,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { ref, computed, onMounted, nextTick, watch, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { Timer, Warning, InfoFilled, Expand, Fold, Location, Star, StarFilled, Share } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
@@ -640,8 +640,9 @@ function initMap() {
   })
 
   // 创建OpenStreetMap图层
-  osmLayer.value = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors',
+  osmLayer.value = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+    subdomains: ['a', 'b', 'c', 'd'],
+    attribution: '© OpenStreetMap contributors, © CartoDB',
     opacity: 0.5
   })
 
@@ -730,8 +731,13 @@ const handleShare = () => {
   })
 }
 
-onMounted(() => {
-  initMap()
+onMounted(async () => {
+  // 等待下一个渲染周期，确保 DOM 已更新
+  await nextTick()
+  // 给容器一点时间完全渲染
+  setTimeout(() => {
+    initMap()
+  }, 100)
 })
 
 onUnmounted(() => {
@@ -835,7 +841,7 @@ onUnmounted(() => {
 
   .panel-content {
     padding: 16px;
-    max-height: calc(80vh - 50px);
+    max-height: calc(100vh - 200px);
     overflow-y: auto;
   }
 

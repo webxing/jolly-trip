@@ -8,6 +8,15 @@ import Routes from '@/views/Routes.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return {
+        top: 0
+      }
+    }
+  },
   routes: [
     {
       path: '/',

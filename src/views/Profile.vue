@@ -271,7 +271,7 @@ const getImageUrl = (imagePath) => {
 <style scoped>
 .profile-container {
   max-width: 1200px;
-  margin: 30px auto;
+  margin: 0 auto;
   padding: 20px;
 }
 
