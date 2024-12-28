@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景圆圈 -->
+  <circle cx="100" cy="100" r="98" fill="#E8F5E9" stroke="#81C784" stroke-width="4"/>
+  
+  <!-- 头部 -->
+  <circle cx="100" cy="85" r="40" fill="#81C784"/>
+  
+  <!-- 身体 -->
+  <path d="M60 145C60 125 80 115 100 115C120 115 140 125 140 145V180H60V145Z" fill="#81C784"/>
+  
+  <!-- 眼睛 -->
+  <circle cx="85" cy="80" r="5" fill="#2E7D32"/>
+  <circle cx="115" cy="80" r="5" fill="#2E7D32"/>
+  
+  <!-- 微笑 -->
+  <path d="M85 95C85 95 90 105 100 105C110 105 115 95 115 95" stroke="#2E7D32" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- 相机 -->
+  <rect x="75" y="130" width="50" height="30" rx="5" fill="#2E7D32"/>
+  <circle cx="100" cy="145" r="8" fill="#81C784"/>
+  <rect x="85" y="125" width="30" height="5" fill="#2E7D32"/>
+</svg>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 成就图标 - 扁平圆形图标风格 -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700"/>
+      <stop offset="100%" style="stop-color:#FFA500"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景圆形 -->
+  <circle cx="100" cy="100" r="98" fill="url(#bg-gradient)"/>
+  
+  <!-- 奖杯 -->
+  <path d="M70 60h60v10c0 30-60 30-60 0v-10z" fill="#FFF"/>
+  <rect x="95" y="70" width="10" height="40" fill="#FFF"/>
+  <path d="M80 110h40v10H80z" fill="#FFF"/>
+  
+  <!-- 奖杯把手 -->
+  <path d="M60 65c-10 0-20 5-20 15s10 15 20 15" fill="none" stroke="#FFF" stroke-width="6"/>
+  <path d="M140 65c10 0 20 5 20 15s-10 15-20 15" fill="none" stroke="#FFF" stroke-width="6"/>
+  
+  <!-- 星星装饰 -->
+  <path d="M100 30l5 15h15l-12 9 4 15-12-9-12 9 4-15-12-9h15z" fill="#FFF"/>
+</svg>

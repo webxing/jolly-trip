@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 社交图标 - 扁平圆形图标风格 -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFA07A"/>
+      <stop offset="100%" style="stop-color:#FF6347"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景圆形 -->
+  <circle cx="100" cy="100" r="98" fill="url(#bg-gradient)"/>
+  
+  <!-- 对话气泡1 -->
+  <path d="M50 80c0-16 16-30 35-30h30c19 0 35 14 35 30s-16 30-35 30H95l-15 20V110c-19 0-30-14-30-30z" 
+        fill="#FFF"/>
+  
+  <!-- 对话气泡2 -->
+  <path d="M90 120c0-12 12-20 25-20h20c13 0 25 8 25 20s-12 20-25 20h-20l-10 15v-15c-13 0-15-8-15-20z" 
+        fill="#FFF"/>
+  
+  <!-- 装饰点 -->
+  <circle cx="80" cy="80" r="4" fill="#FF6347"/>
+  <circle cx="100" cy="80" r="4" fill="#FF6347"/>
+  <circle cx="120" cy="80" r="4" fill="#FF6347"/>
+</svg>
