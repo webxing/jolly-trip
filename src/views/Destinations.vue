@@ -143,8 +143,9 @@ const getImageUrl = (imagePath) => {
 
 <style scoped>
 .destinations-page {
-  padding: 20px;
   max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .search-section {
