@@ -4,7 +4,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [vue()],
-  base: '/jolly-trip/',  
+  base: process.env.NODE_ENV === 'production' ? '/jolly-trip/' : '/',  
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
@@ -19,8 +19,16 @@ export default defineConfig({
     assetsDir: 'assets',
     rollupOptions: {
       output: {
-        manualChunks: undefined
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name.endsWith('.jpg') || 
+              assetInfo.name.endsWith('.png') || 
+              assetInfo.name.endsWith('.jpeg')) {
+            return 'images/[name][extname]'
+          }
+          return 'assets/[name]-[hash][extname]'
+        }
       }
     }
-  }
+  },
+  publicDir: 'public'
 })

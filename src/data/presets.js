@@ -4055,7 +4055,7 @@ export const destinations = [
       {
         id: 'r37',
         name: '传统文化探索',
-        theme: '文化探索',
+        theme: '历史遗迹',
         duration: '1天',
         difficulty: '简单',
         description: '探索迪拜的传统文化与历史',
