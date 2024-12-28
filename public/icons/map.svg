@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 地图系统图标 - 扁平圆形图标风格 -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F0E68C"/>
+      <stop offset="100%" style="stop-color:#DAA520"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景圆形 -->
+  <circle cx="100" cy="100" r="98" fill="url(#bg-gradient)"/>
+  
+  <!-- 地图轮廓 -->
+  <path d="M50 70l30-10 40 10 30-10v80l-30 10-40-10-30 10z" fill="#FFF"/>
+  
+  <!-- 折线 -->
+  <path d="M80 60v80M120 70v80" stroke="#DAA520" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- 位置标记 -->
+  <path d="M95 80l5 10 5-10a7 7 0 1 0-10 0z" fill="#FF4500"/>
+  <circle cx="100" cy="120" r="7" fill="#4169E1"/>
+  
+  <!-- 指南针装饰 -->
+  <path d="M150 50l5 5-5 5-5-5z" fill="#DAA520"/>
+</svg>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 探索图标 - 扁平圆形图标风格 -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB"/>
+      <stop offset="100%" style="stop-color:#4169E1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景圆形 -->
+  <circle cx="100" cy="100" r="98" fill="url(#bg-gradient)"/>
+  
+  <!-- 指南针外圈 -->
+  <circle cx="100" cy="100" r="70" fill="none" stroke="#FFF" stroke-width="4"/>
+  
+  <!-- 指南针刻度 -->
+  <path d="M100 40v10M100 150v10M40 100h10M150 100h10" stroke="#FFF" stroke-width="4"/>
+  <path d="M70 70l7 7M130 70l-7 7M70 130l7-7M130 130l-7-7" stroke="#FFF" stroke-width="4"/>
+  
+  <!-- 指南针指针 -->
+  <path d="M100 50l15 50h-30z" fill="#FF6347"/>
+  <path d="M100 150l-15-50h30z" fill="#FFF"/>
+  
+  <!-- 中心点 -->
+  <circle cx="100" cy="100" r="5" fill="#FFF"/>
+</svg>

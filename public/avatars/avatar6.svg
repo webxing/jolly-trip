@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背包客头像 - 扁平圆形图标风格 -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#90EE90"/>
+      <stop offset="100%" style="stop-color:#32CD32"/>
+    </linearGradient>
+    <!-- 背包客徽章渐变 -->
+    <linearGradient id="backpacker-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#98FB98"/>
+      <stop offset="100%" style="stop-color:#228B22"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景圆形 -->
+  <circle cx="100" cy="100" r="98" fill="url(#bg-gradient)"/>
+  
+  <!-- 背包客徽章 -->
+  <circle cx="100" cy="100" r="80" fill="url(#backpacker-gradient)" opacity="0.1"/>
+  
+  <!-- 指南针装饰 -->
+  <path d="M50 100h20M130 100h20" stroke="#228B22" stroke-width="2" opacity="0.3"/>
+  <path d="M100 50v20M100 130v20" stroke="#228B22" stroke-width="2" opacity="0.3"/>
+  
+  <!-- 背包 -->
+  <path d="M70 80C70 80 70 140 100 140S130 80 130 80L120 70H80L70 80Z" 
+        fill="#228B22"/>
+  
+  <!-- 背包带 -->
+  <path d="M80 70C80 70 90 50 100 50S120 70 120 70" 
+        stroke="#228B22" 
+        stroke-width="8"
+        stroke-linecap="round"
+        fill="none"/>
+  
+  <!-- 口袋 -->
+  <rect x="85" y="100" width="30" height="20" rx="5" fill="#90EE90"/>
+  <path d="M90 110H110" stroke="#228B22" stroke-width="2"/>
+  
+  <!-- 旅行装饰 -->
+  <circle cx="60" cy="60" r="10" fill="none" stroke="#228B22" stroke-width="2" opacity="0.3"/>
+  <circle cx="140" cy="60" r="10" fill="none" stroke="#228B22" stroke-width="2" opacity="0.3"/>
+  <circle cx="60" cy="140" r="10" fill="none" stroke="#228B22" stroke-width="2" opacity="0.3"/>
+  <circle cx="140" cy="140" r="10" fill="none" stroke="#228B22" stroke-width="2" opacity="0.3"/>
+</svg>
