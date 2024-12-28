@@ -127,7 +127,7 @@
                :key="dest.id" 
                class="destination-card"
                @click="handleDestinationClick(dest)">
-            <el-image :src="dest.image" fit="cover">
+            <el-image :src="getImageUrl(dest.image)" fit="cover">
               <template #error>
                 <div class="image-slot">
                   <el-icon><Picture /></el-icon>
@@ -498,6 +498,11 @@ const handleTimelineClick = () => {
   console.log('点击了时间轴')
 }
 
+// 新增图片路径处理函数
+const getImageUrl = (imagePath) => {
+  const fileName = imagePath.split('/').pop()
+  return new URL(`../assets/images/${fileName}`, import.meta.url).href
+}
 </script>
 
 <style scoped>

@@ -29,7 +29,7 @@
         @click="goToDestination(dest)"
       >
         <div class="card-header">
-          <el-image :src="dest.image" fit="cover">
+          <el-image :src="getImageUrl(dest.image)" fit="cover">
             <template #error>
               <div class="image-slot">
                 <el-icon><Picture /></el-icon>
@@ -57,7 +57,7 @@
         <div class="featured-photos" v-if="dest.featuredPhotos">
           <el-carousel height="200px" indicator-position="outside" :interval="4000">
             <el-carousel-item v-for="photo in dest.featuredPhotos" :key="photo.url">
-              <el-image :src="photo.url" fit="cover">
+              <el-image :src="getImageUrl(photo.url)" fit="cover">
                 <template #error>
                   <div class="image-slot">
                     <el-icon><Picture /></el-icon>
@@ -132,6 +132,12 @@ const goToDestination = (destination) => {
     name: 'destinations-map',
     query: { id: destination.id.toString() }
   })
+}
+
+// 新增图片路径处理函数
+const getImageUrl = (imagePath) => {
+  const fileName = imagePath.split('/').pop()
+  return new URL(`../assets/images/${fileName}`, import.meta.url).href
 }
 </script>
 
