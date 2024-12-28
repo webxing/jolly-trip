@@ -4,7 +4,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [vue()],
-  base: process.env.NODE_ENV === 'production' ? '/jolly-trip/' : '/',  
+  base: '/jolly-trip/',  // 生产环境使用固定的 base 路径
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
